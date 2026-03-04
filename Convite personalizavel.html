@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O FIM DE SEMANA ÉPICO</title>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark: #0a0a0a;
+            --gray: #1a1a1a;
+            --white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--dark);
+            color: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ESCONDER O VÍDEO DO YOUTUBE COMPLETAMENTE */
+        .video-oculto {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            padding: 40px 20px;
+            text-align: center;
+            border: 1px solid var(--gold);
+            border-radius: 20px;
+            background: linear-gradient(145deg, #121212, #050505);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            animation: fadeIn 1.5s ease-out;
+            margin: 20px 0;
+            z-index: 1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header-title {
+            font-size: 0.9rem;
+            letter-spacing: 5px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            background: linear-gradient(to right, #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .timeline {
+            margin: 30px 0;
+            text-align: left;
+            border-left: 2px solid var(--gold);
+            padding-left: 20px;
+            margin-left: 20px;
+        }
+
+        .event-day {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .event-day::before {
+            content: '';
+            position: absolute;
+            left: -27px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--gold);
+        }
+
+        .day-title {
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 18px 40px;
+            background-color: var(--gold);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.08);
+            background-color: #fff;
+            box-shadow: 0 5px 25px rgba(255, 255, 255, 0.5);
+        }
+
+        p {
+            line-height: 1.5;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-oculto">
+        <div id="player"></div>
+    </div>
+
+    <div class="container">
+        <p class="header-title">A convocação para o</p>
+        <h1>nome do Aniversariante  </h1>
+        
+        <p style="font-style: italic; color: var(--gold); margin-bottom: 30px;">
+            "descrição."
+        </p>
+
+        <div class="timeline">
+            <div class="event-day">
+                <div class="day-title">Sábado • Abertura dos Portões</div>
+                <p>informações.</p>
+            </div>
+
+            <div class="event-day">
+                <div class="day-title">Local Do Evento</div>
+                <p>informações do local </p>
+            </div>
+
+            <div class="event-day">
+                <div class="day-title">Entrada Do Evento </div>
+                <p>informações </p>
+            </div>
+
+            <div class="event-day">
+                <div class="day-title">Por Pessoa </div>
+                <p>R$ --.-- ainda não definida</p>
+            </div>
+        </div>
+
+
+        <p>Acesse o Grupo Para Mais Informações:</p>
+        
+    
+        <a href="Link Para Grupo de Wattzap" class="cta-button">ENTRAR NO GRUPO VIP</a>
+
+        <a href="Link para formulhario" class="cta-button">Confirmar Presença No Evento</a>
+    
+    
+    </div>
+
+    <script src="https://youtu.be/AcjZLz8SA30?si=t4hgIv_wrn9voVTK/iframe_api"></script>
+    <script>
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '0',
+                width: '0',
+                videoId: 'AcjZLz8SA30', // ID do seu vídeo
+                playerVars: {
+                    'autoplay': 1,
+                    'loop': 1,
+                    'playlist': 'AcjZLz8SA30'
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            // Tenta dar play, mas o navegador vai barrar o som até o primeiro clique
+            event.target.playVideo();
+        }
+
+        // Quando o usuário clicar em qualquer lugar da página, o som ativa
+        document.body.addEventListener('click', function() {
+            if (player) {
+                player.unMute();
+                player.playVideo();
+            }
+        }, { once: true });
+    </script>
+
+</body>
+</html>
